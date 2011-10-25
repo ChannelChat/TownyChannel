@@ -1,0 +1,5 @@
+name: TownyChannel
+main: feildmaster.Modules.ChanChat.Towny.towny
+version: 1.0
+author: feildmaster
+depend: [ChannelChat, Towny]

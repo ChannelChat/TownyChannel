@@ -1,0 +1,6 @@
+Town:
+  enabled: true
+  name: Town
+  tag: '[{NAME}]'
+  listed: false
+  alias: t
