@@ -22,14 +22,18 @@ public class TownyChannel extends CustomChannel {
         type = TownType.Town;
     }
 
-    // TODO: Check if player has a town/nation before allowing to join!
+    // TODO: Check if player has a town/nation before allowing to join?
     public void sendJoinMessage(Player player) {
         if(type == TownType.Town && (getResident(player) != null && getResident(player).hasTown())) {
+            members = new HashSet<String>();
+            for(Resident r : getTown(getResident(player)).getResidents())
+                members.add(r.getName());
             nametag = getTown(getResident(player)).getName();
         }
 
         super.sendJoinMessage(player);
 
+        members = null;
         nametag = null;
     }
 
@@ -46,13 +50,13 @@ public class TownyChannel extends CustomChannel {
         List<Resident> list = null;
 
         try {
-            Resident res = towny.plugin.getResident(event.getPlayer().getName());
+            Resident res = getResident(event.getPlayer());
             if(!res.hasTown()) {
                 event.getPlayer().sendMessage(format(" You do not have a town."));
                 event.setCancelled(true);
                 return;
             }
-            Town town = res.getTown();
+            Town town = getTown(res);
             if(type.equals(TownType.Town)) {
                 list = town.getResidents();
                 nametag = town.getName();
@@ -89,7 +93,7 @@ public class TownyChannel extends CustomChannel {
     private Resident getResident(Player player) {
         Resident resident = null;
         try {
-            resident = towny.plugin.getResident(player.getName());
+            resident = towny.towny.getResident(player.getName());
         } catch (NotRegisteredException ex) {}
         return resident;
     }
@@ -108,5 +112,9 @@ public class TownyChannel extends CustomChannel {
         } catch (NotRegisteredException ex) {
             return null;
         }
+    }
+
+    public void callReload() {
+        towny.getPlugin().reloadConfig();
     }
 }
