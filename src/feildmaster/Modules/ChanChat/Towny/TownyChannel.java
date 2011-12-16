@@ -1,10 +1,11 @@
-package feildmaster.Modules.ChanChat.Towny;
+package feildmaster.modules.chanchat.towny;
 
-import com.feildmaster.chanchat.Chan.CustomChannel;
+import com.feildmaster.channelchat.channel.CustomChannel;
 import com.palmergames.bukkit.towny.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Resident;
 import com.palmergames.bukkit.towny.object.Town;
+import com.palmergames.bukkit.towny.object.TownyUniverse;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -68,7 +69,7 @@ public class TownyChannel extends CustomChannel {
                 event.isCancelled();
                 return;
             }
-        } catch (NotRegisteredException e) {
+        } catch (Exception e) {
             event.getPlayer().sendMessage(format(" Not registered with towny."));
             event.setCancelled(true);
             return;
@@ -85,23 +86,18 @@ public class TownyChannel extends CustomChannel {
         nametag = null;
     }
 
-    public static enum TownType {
-        Town,
-        Nation;
-    }
-
     private Resident getResident(Player player) {
-        Resident resident = null;
         try {
-            resident = towny.towny.getResident(player.getName());
-        } catch (NotRegisteredException ex) {}
-        return resident;
+            return TownyUniverse.plugin.getTownyUniverse().getResident(player.getName());
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private Town getTown(Resident player) {
         try {
             return player.getTown();
-        } catch (NotRegisteredException ex) {
+        } catch (Exception ex) {
             return null;
         }
     }
@@ -115,6 +111,11 @@ public class TownyChannel extends CustomChannel {
     }
 
     public void callReload() {
-        towny.getPlugin().reloadConfig();
+        Towny.getPlugin().reloadConfig();
+    }
+
+    public static enum TownType {
+        Town,
+        Nation;
     }
 }

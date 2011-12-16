@@ -3,4 +3,5 @@ Town:
   name: Town
   tag: '[{NAME}]'
   listed: false
+  auto: true
   alias: t
