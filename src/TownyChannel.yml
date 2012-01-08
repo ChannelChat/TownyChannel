@@ -5,3 +5,10 @@ Town:
   listed: false
   auto: true
   alias: t
+Nation:
+  enabled: true
+  name: Nation
+  tag: '[{NAME}]'
+  listed: failse
+  auto: true
+  alias: n
