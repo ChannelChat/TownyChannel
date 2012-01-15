@@ -9,6 +9,6 @@ Nation:
   enabled: true
   name: Nation
   tag: '[{NAME}]'
-  listed: failse
+  listed: false
   auto: true
   alias: n
