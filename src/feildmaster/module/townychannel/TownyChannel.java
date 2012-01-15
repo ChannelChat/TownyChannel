@@ -97,7 +97,7 @@ public class TownyChannel extends CustomChannel {
 
     private Resident getResident(Player player) {
         try {
-            return TownyUniverse.plugin.getTownyUniverse().getResident(player.getName());
+            return TownyUniverse.getDataSource().getResident(player.getName());
         } catch (Exception ex) {
             return null;
         }
