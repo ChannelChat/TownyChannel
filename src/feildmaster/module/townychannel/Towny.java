@@ -17,6 +17,8 @@ public class Towny extends Module implements Listener {
         plugin = this;
 
         reloadConfig();
+
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     public void onDisable() {
