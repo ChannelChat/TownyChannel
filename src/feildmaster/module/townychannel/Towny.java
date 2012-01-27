@@ -15,10 +15,8 @@ public class Towny extends Module implements Listener {
 
     public void onEnable() {
         plugin = this;
-
         reloadConfig();
-
-        getServer().getPluginManager().registerEvents(this, this);
+        registerEvents(this);
     }
 
     public void onDisable() {
@@ -44,10 +42,8 @@ public class Towny extends Module implements Listener {
     public void reloadConfig() {
         super.reloadConfig();
 
-        if(!getConfig().exists())
+        if(!getConfig().fileExists() || !getConfig().checkDefaults())
             getConfig().saveDefaults();
-
-        getConfig().checkDefaults();
 
         // TODO: Clean, Streamline
         if(townChan == null) townChan = new TownyChannel(getConfig().getString("Town.name"));
@@ -55,9 +51,7 @@ public class Towny extends Module implements Listener {
         townChan.setTag(getConfig().getString("Town.tag"));
         townChan.setListed(getConfig().getBoolean("Town.listed"));
         townChan.setAuto(getConfig().getBoolean("Town.auto"));
-
-        String alias = getConfig().getString("Town.alias");
-        if(!townChan.setAlias(alias)) getServer().getLogger().info("Alias "+alias+" is taken.");
+        if(!townChan.setAlias(getConfig().getString("Town.alias"))) getServer().getLogger().info("Alias "+getConfig().getString("Town.alias")+" is taken.");
 
         if(getConfig().getBoolean("Town.enabled")) addTown();
         else removeTown();
@@ -67,9 +61,7 @@ public class Towny extends Module implements Listener {
         nationChan.setTag(getConfig().getString("Nation.tag"));
         nationChan.setListed(getConfig().getBoolean("Nation.listed"));
         nationChan.setAuto(getConfig().getBoolean("Nation.auto"));
-
-        String alias2 = getConfig().getString("Nation.alias");
-        if(!nationChan.setAlias(alias2)) getServer().getLogger().info("Alias "+alias2+" is taken.");
+        if(!nationChan.setAlias(getConfig().getString("Nation.alias"))) getServer().getLogger().info("Alias "+getConfig().getString("Nation.alias")+" is taken.");
 
         if(getConfig().getBoolean("Nation.enabled")) addNation();
         else removeNation();
