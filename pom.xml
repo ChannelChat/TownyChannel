@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.feildmaster.module.townychannel</groupId>
+    <groupId>com.feildmaster.module.towny</groupId>
     <artifactId>TownyChannel</artifactId>
-    <version>1.4 beta</version>
+    <version>1.4 beta-SNAPSHOT</version>
     <name>TownyChannel</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,6 +41,12 @@
         </dependency>
     </dependencies>
     <build>
-        <defaultGoal>install</defaultGoal>
+        <defaultGoal>clean resources:resources install</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

@@ -1,4 +1,4 @@
-package com.feildmaster.module.townychannel;
+package com.feildmaster.module.towny;
 
 import com.feildmaster.channelchat.Module;
 import org.bukkit.event.*;

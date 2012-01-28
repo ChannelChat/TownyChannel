@@ -1,4 +1,4 @@
-package com.feildmaster.module.townychannel;
+package com.feildmaster.module.towny;
 
 import com.feildmaster.channelchat.channel.CustomChannel;
 import com.palmergames.bukkit.towny.object.*;

@@ -7,7 +7,6 @@
 nbbuild.xml
 nbproject/*
 lib/*
-!lib/*.jar
 
 # we use ANT!
 /target

@@ -1,5 +1,5 @@
-name: TownyChannel
-main: com.feildmaster.module.townychannel.Towny
-version: 1.4 Beta
+name: ${name}
+main: com.feildmaster.module.towny.Towny
+version: ${version}
 author: feildmaster
 softdepend: [ChannelChat]
