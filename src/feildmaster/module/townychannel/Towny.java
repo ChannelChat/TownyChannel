@@ -15,7 +15,7 @@ public class Towny extends Module implements Listener {
 
     public void onEnable() {
         plugin = this;
-        reloadConfig();
+        reloadPlugin();
         registerEvents(this);
     }
 
@@ -26,7 +26,7 @@ public class Towny extends Module implements Listener {
 
     @EventHandler
     public void onReload(ReloadEvent event) {
-        reloadConfig();
+        reloadPlugin();
     }
 
     @EventHandler
@@ -39,8 +39,8 @@ public class Towny extends Module implements Listener {
         }
     }
 
-    public void reloadConfig() {
-        super.reloadConfig();
+    public void reloadPlugin() {
+        reloadConfig();
 
         if(!getConfig().fileExists() || !getConfig().checkDefaults())
             getConfig().saveDefaults();
