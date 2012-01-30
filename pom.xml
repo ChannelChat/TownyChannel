@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.feildmaster.module.towny</groupId>
     <artifactId>TownyChannel</artifactId>
-    <version>1.4 beta-SNAPSHOT</version>
+    <version>1.4</version>
     <name>TownyChannel</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

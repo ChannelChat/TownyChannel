@@ -2,8 +2,7 @@ package com.feildmaster.module.towny;
 
 import com.feildmaster.channelchat.Module;
 import org.bukkit.event.*;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 import com.feildmaster.channelchat.event.channel.*;
 import static com.feildmaster.channelchat.channel.ChannelManager.getManager;
 
