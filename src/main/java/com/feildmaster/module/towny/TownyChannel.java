@@ -23,6 +23,7 @@ public class TownyChannel extends CustomChannel {
         this.type = type;
     }
 
+    @Override
     public void sendJoinMessage(Player player) {
         Resident a = getResident(player);
 
@@ -51,17 +52,20 @@ public class TownyChannel extends CustomChannel {
         nametag = null;
     }
 
+    @Override
     public Boolean isMember(Player player) {
         if(members == null) return super.isMember(player);
         return super.isMember(player) && members.contains(player.getName());
     }
 
+    @Override
     public String getDisplayName() {
         return super.getDisplayName().replaceAll("(?i)\\{name}", nametag == null?getName():nametag);
     }
 
+    @Override
     public void handleEvent(PlayerChatEvent event) {
-        List<Resident> list = null;
+        List<Resident> list;
 
         Resident res = getResident(event.getPlayer());
         if(!res.hasTown()) {

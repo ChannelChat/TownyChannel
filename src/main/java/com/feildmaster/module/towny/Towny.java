@@ -5,6 +5,7 @@ import org.bukkit.event.*;
 import java.util.*;
 import com.feildmaster.channelchat.event.channel.*;
 import static com.feildmaster.channelchat.channel.ChannelManager.getManager;
+import java.util.logging.Level;
 
 public class Towny extends Module implements Listener {
     private static Towny plugin;
@@ -38,6 +39,7 @@ public class Towny extends Module implements Listener {
         }
     }
 
+    @Override
     public void reloadConfig() {
         super.reloadConfig();
 
@@ -51,7 +53,7 @@ public class Towny extends Module implements Listener {
         townChan.setTag(getConfig().getString("Town.tag"));
         townChan.setListed(getConfig().getBoolean("Town.listed"));
         townChan.setAuto(getConfig().getBoolean("Town.auto"));
-        if(!townChan.setAlias(getConfig().getString("Town.alias"))) getServer().getLogger().info("Alias "+getConfig().getString("Town.alias")+" is taken.");
+        if(!townChan.setAlias(getConfig().getString("Town.alias"))) getServer().getLogger().log(Level.INFO, "Alias {0} is taken.", getConfig().getString("Town.alias"));
 
         if(getConfig().getBoolean("Town.enabled")) addTown();
         else removeTown();
@@ -61,7 +63,7 @@ public class Towny extends Module implements Listener {
         nationChan.setTag(getConfig().getString("Nation.tag"));
         nationChan.setListed(getConfig().getBoolean("Nation.listed"));
         nationChan.setAuto(getConfig().getBoolean("Nation.auto"));
-        if(!nationChan.setAlias(getConfig().getString("Nation.alias"))) getServer().getLogger().info("Alias "+getConfig().getString("Nation.alias")+" is taken.");
+        if(!nationChan.setAlias(getConfig().getString("Nation.alias"))) getServer().getLogger().log(Level.INFO, "Alias {0} is taken.", getConfig().getString("Nation.alias"));
 
         if(getConfig().getBoolean("Nation.enabled")) addNation();
         else removeNation();
@@ -69,14 +71,14 @@ public class Towny extends Module implements Listener {
 
     private void addTown() {
         if(!getManager().addChannel(townChan)) {
-            getServer().getLogger().info("Channel could not be added! (Name {"+townChan.getName()+"} taken?)");
+            getServer().getLogger().log(Level.INFO, "Channel could not be added! (Name '{'{0}'}' taken?)", townChan.getName());
             townChan = null;
         }
     }
 
     private void addNation() {
         if(!getManager().addChannel(nationChan)) {
-            getServer().getLogger().info("Channel could not be added! (Name {"+townChan.getName()+"} taken?)");
+            getServer().getLogger().log(Level.INFO, "Channel could not be added! (Name '{'{0}'}' taken?)", townChan.getName());
             nationChan = null;
         }
     }
@@ -95,7 +97,7 @@ public class Towny extends Module implements Listener {
             nationChan.sendMessage("TownyChannel has disabled, or is reloading.");
             getManager().deleteChannel(nationChan);
         }
-        
+
         nationChan = null;
     }
 

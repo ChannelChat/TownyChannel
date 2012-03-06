@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.feildmaster.module.towny</groupId>
     <artifactId>TownyChannel</artifactId>
-    <version>1.4</version>
+    <version>1.4.1-SNAPSHOT</version>
     <name>TownyChannel</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,14 +21,14 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.1-R1</version>
+            <version>1.1-R6</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.feildmaster.channelchat</groupId>
             <artifactId>ChannelChat</artifactId>
-            <version>0.6 Beta-SNAPSHOT</version>
+            <version>0.6-beta</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
